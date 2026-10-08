@@ -5,7 +5,7 @@
 
 **Motion, made visible.** A responsive interactive engineering sandbox that makes planetary transmission kinematics tangible.
 
-![TorqueLab desktop preview](docs/screenshots/desktop.png)
+![TorqueLab desktop preview](docs/screenshots/desktop.jpg)
 
 [Features](#features) · [Physics](#physics) · [Run locally](#run-locally) · [Tests](#tests) · [Deploy](#deploy)
 
@@ -15,7 +15,7 @@
 
 | Desktop studio | Mobile laboratory |
 |:---:|:---:|
-| ![Desktop](docs/screenshots/desktop.png) | <img src="docs/screenshots/mobile.png" alt="Responsive mobile preview" width="245" /> |
+| ![Desktop](docs/screenshots/desktop.jpg) | <img src="docs/screenshots/mobile.jpg" alt="Responsive mobile preview" width="245" /> |
 
 ![Animated schematic](docs/demo.gif)
 
@@ -104,11 +104,11 @@ torquelab/
 ├── assets/favicon.svg        # Brand icon
 ├── docs/
 │   ├── demo.gif
-│   ├── gear-render.png
+│   ├── gear-render.jpg
 │   ├── configuration-example.json
 │   └── screenshots/
-│       ├── desktop.png
-│       └── mobile.png
+│       ├── desktop.jpg
+│       └── mobile.jpg
 └── .github/workflows/tests.yml
 ```
 

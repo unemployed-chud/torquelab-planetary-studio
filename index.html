@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090d14" />
+  <meta name="description" content="TorqueLab is an interactive planetary gearbox simulator. Explore gear ratios and real motion with accurate Willis kinematics." />
+  <title>TorqueLab — Planetary Gear Studio</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Application identity">
+      <a class="logo-box" href="#top" aria-label="TorqueLab home"><svg width="33" height="33" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4.5 24.3 7.1 29.1 6.5l1.2 5.2 4.4 3.2-2.2 4.7 1 5.3-5.1 1.9-2.8 4.7-5.6-1.1-5.6 1.1-2.8-4.7-5.1-1.9 1-5.3-2.2-4.7 4.4-3.2 1.2-5.2 4.8.6L20 4.5Z" stroke="currentColor" stroke-width="2.1"/><circle cx="20" cy="20" r="6.4" stroke="currentColor" stroke-width="2.3"/><circle cx="20" cy="20" r="1.9" fill="currentColor"/></svg></a>
+      <span class="rail-divider"></span>
+      <a class="rail-icon selected" href="#studio" aria-label="Simulator" title="Simulator"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M8 15V9m4 9V6m4 9v-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      <a class="rail-icon" href="#analysis" aria-label="Analysis" title="Analysis"><svg viewBox="0 0 24 24" fill="none"><path d="M3 19h18M5 15.5l4-6 4.5 3 5.5-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="m16 4.5 3 .1-.2 3" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      <a class="rail-icon" href="#guide" aria-label="Guide" title="Guide"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6m0-10v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+      <div class="rail-spacer"></div><div class="rail-bottom">TL<span class="rail-version">/ 01</span></div>
+    </aside>
+    <main class="workspace" id="top">
+      <header class="topbar">
+        <div class="crumb">LABORATORY <span>/</span> MOTION SYSTEMS <span>/</span> <strong>01</strong></div>
+        <div class="top-meta"><span class="system-dot"></span> SYSTEM OPERATIONAL <span class="separator"></span> v1.0.0</div>
+      </header>
+      <div class="content">
+        <section class="intro" aria-labelledby="page-title">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE ENGINEERING SANDBOX <span class="eyebrow-line"></span> 001</div>
+            <h1 id="page-title">Motion, <em>made visible.</em></h1>
+            <p>Design, experiment, and understand the mechanics of planetary gear systems — in real time.</p>
+          </div>
+          <div class="intro-actions"><button type="button" class="outline-button" id="download-json"><span class="button-icon">↓</span> EXPORT DATA</button><button type="button" class="light-button" id="download-png"><span class="button-icon">↗</span> SAVE RENDER</button></div>
+        </section>
+        <section class="work-grid" id="studio" aria-label="Gear simulation and controls">
+          <div class="sim-panel surface">
+            <div class="panel-top"><div><span class="section-index">01 / SIMULATION</span><h2>Planetary gear assembly</h2></div><span class="live-badge"><span class="pulse-dot"></span> LIVE KINEMATICS</span></div>
+            <div class="canvas-wrap" id="canvas-wrap">
+              <canvas id="gear-canvas" role="img" aria-label="Animated diagram of a planetary gear assembly with sun, ring and orbiting planet gears"></canvas>
+              <div class="canvas-top-left">FIG 01. — EPICYCLIC GEAR TRAIN<br/><span>FRONT ORTHOGRAPHIC VIEW</span></div>
+              <div class="canvas-top-right"><div class="little-square"></div> 1:1 SCALE · SCHEMATIC</div>
+              <div class="canvas-label label-ring"><span class="label-dot dot-orange"></span> RING / <span id="label-ring">72T</span></div>
+              <div class="canvas-label label-sun"><span class="label-dot dot-cyan"></span> SUN / <span id="label-sun">24T</span></div>
+              <div class="canvas-bottom"><div class="view-coordinate">X <span>+025.50</span> / Y <span>+000.00</span></div><div class="render-mode">2D REAL-TIME MOTION</div></div>
+            </div>
+            <div class="sim-toolbar"><div class="toolbar-left"><button class="play-btn" id="toggle-play" aria-label="Pause simulation"><span id="play-icon">Ⅱ</span></button><div class="play-text"><strong id="play-status">Simulation running</strong><small>Physical ratio / scaled playback</small></div></div>
+              <div class="toolbar-right"><button class="icon-button" id="reset" aria-label="Reset animation" title="Reset animation">↺</button><div class="divider-vertical"></div><label for="speed">PLAYBACK <strong id="speed-value">1.0×</strong></label><input id="speed" type="range" min="0.2" max="3" step="0.2" value="1" aria-label="Playback speed multiplier" /></div></div>
+          </div>
+          <div class="controls-panel surface">
+            <div class="panel-top control-heading"><div><span class="section-index">02 / CONFIGURATION</span><h2>Transmission setup</h2></div><div class="control-top-icon">⚙</div></div>
+            <div class="control-body">
+              <div class="control-section"><div class="control-caption"><span>CONFIGURATION PRESETS</span><span class="caption-note">01 — 03</span></div><div class="preset-grid" id="presets"></div></div>
+              <div class="control-section"><div class="control-caption"><span>DRIVE MODE</span><span class="caption-note">SELECT INPUT</span></div><div class="mode-selector" role="group" aria-label="Drive mode" id="mode-selector"></div></div>
+              <div class="control-section rpm-block"><div class="slider-header"><label for="input-rpm">INPUT SHAFT SPEED</label><div><strong id="rpm-value">900</strong><small>RPM</small></div></div><input id="input-rpm" type="range" min="100" max="2400" value="900" step="50" aria-label="Input shaft speed in revolutions per minute"/><div class="range-ticks"><span>100 RPM</span><span>1,250</span><span>2,400 RPM</span></div></div>
+              <div class="control-section teeth-section"><div class="control-caption"><span>GEAR GEOMETRY</span><span class="caption-note">TEETH COUNT</span></div>
+                <div class="teeth-row"><div><span class="gear-dot dot-cyan"></span><span>SUN GEAR</span></div><div class="stepper"><button id="sun-minus" aria-label="Decrease sun teeth">−</button><output id="sun-count">24</output><button id="sun-plus" aria-label="Increase sun teeth">+</button></div></div>
+                <div class="teeth-row"><div><span class="gear-dot dot-yellow"></span><span>PLANET GEAR</span></div><div class="stepper"><button id="planet-minus" aria-label="Decrease planet teeth">−</button><output id="planet-count">24</output><button id="planet-plus" aria-label="Increase planet teeth">+</button></div></div>
+                <div class="teeth-row ring-row"><div><span class="gear-dot dot-orange"></span><span>RING GEAR</span></div><div class="computed-count"><output id="ring-count">72</output><span>AUTO</span></div></div>
+              </div>
+              <div class="assembly-valid" id="assembly-valid"><span>✓</span> VALID 3-PLANET ASSEMBLY <span class="assembly-description">R = S + 2P</span></div>
+            </div>
+          </div>
+        </section>
+        <section class="metrics" aria-label="Live calculated output">
+          <div class="metric surface"><div class="metric-title">TRANSMISSION RATIO <span>↗</span></div><div class="metric-value"><strong id="ratio-value">4.00</strong><span>: 1</span></div><div class="metric-sub">SPEED REDUCTION FACTOR</div></div>
+          <div class="metric surface"><div class="metric-title">OUTPUT SPEED <span>↗</span></div><div class="metric-value cyan"><strong id="output-value">225</strong><span>RPM</span></div><div class="metric-sub"><span class="cyan-dot"></span><span id="output-direction">SAME ROTATION DIRECTION</span></div></div>
+          <div class="metric surface"><div class="metric-title">PLANET SPIN <span>↗</span></div><div class="metric-value"><strong id="planet-value">−450</strong><span>RPM</span></div><div class="metric-sub">ABSOLUTE ANGULAR VELOCITY</div></div>
+          <div class="metric surface status-metric"><div class="metric-title">ASSEMBLY STATUS <span>↗</span></div><div class="metric-value status-value"><span class="status-check">✓</span><strong>VALID</strong></div><div class="metric-sub">3 PLANETS · EXACT GEOMETRY</div></div>
+        </section>
+        <section class="bottom-grid" id="analysis">
+          <div class="chart-panel surface"><div class="panel-top"><div><span class="section-index">03 / PERFORMANCE ANALYSIS</span><h2>Output across configurations</h2></div><span class="chart-legend"><span></span> OUTPUT RPM</span></div><div class="chart-inner"><svg id="bar-chart" viewBox="0 0 660 160" role="img" aria-label="Chart comparing output speed for three gear configurations"></svg></div></div>
+          <div class="insight-panel surface" id="guide"><div class="panel-top"><div><span class="section-index">04 / ENGINEERING INSIGHT</span><h2>Behind the motion</h2></div><div class="insight-star">✳</div></div><div class="formula">N<sub>s</sub>(ω<sub>s</sub> − ω<sub>c</sub>) + N<sub>r</sub>(ω<sub>r</sub> − ω<sub>c</sub>) = 0</div><p id="insight-text">Locking the ring gear allows the sun gear to drive the carrier at reduced speed, increasing available output torque in an ideal system.</p><div class="insight-foot"><span>WILLIS EQUATION</span><span>IDEAL KINEMATICS ↗</span></div></div>
+        </section>
+        <footer class="footer"><span>TORQUELAB © 2026 <span class="footer-divider">/</span> OPEN-SOURCE ENGINEERING EXPERIMENT</span><span>Illustrative tooth geometry · not production involute profiles</span><button id="print-report" type="button">PRINT REPORT ↗</button></footer>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="./src/app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "project": "TorqueLab",
+  "date": "2026-10-08T19:02:04.366Z",
+  "configuration": {
+    "sun": 21,
+    "planet": 27,
+    "ring": 75,
+    "mode": "carrier-fixed",
+    "inputRPM": 1200
+  },
+  "results": {
+    "sunRPM": 1200,
+    "ringRPM": -336,
+    "carrierRPM": 0,
+    "planetRPM": -933.3333333333334,
+    "outputRPM": -336,
+    "reductionRatio": 3.5714285714285716,
+    "direction": "reverse"
+  },
+  "formula": "Ns*(ws-wc)+Nr*(wr-wc)=0"
+}
